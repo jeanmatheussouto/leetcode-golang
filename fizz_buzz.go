@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"flag"
 )
 
 func fizzBuzz(n int) []string {
@@ -23,7 +24,16 @@ func fizzBuzz(n int) []string {
     return r
 }
 
+var number int
+
+func init(){
+	flag.IntVar(&number, "number", 1, "number of items")
+}
+
 func main() {
-	result := fizzBuzz(15)
-	fmt.Println(result)
+	flag.Parse()
+
+	for _, str := range fizzBuzz(number) {
+		fmt.Println(str)
+	}
 }
